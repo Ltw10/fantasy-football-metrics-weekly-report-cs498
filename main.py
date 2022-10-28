@@ -262,7 +262,7 @@ if __name__ == "__main__":
         configuration = get_valid_config()
 
     # check to see if the current app is behind any commits, and provide option to update and re-run if behind
-    up_to_date = check_for_updates(options.get("auto_run", False))
+    #up_to_date = check_for_updates(options.get("auto_run", False))
 
     report = select_league(
         configuration,

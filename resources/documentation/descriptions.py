@@ -62,6 +62,17 @@ team_luck_rankings = "Luck is calculated by matching up each team against every 
 
 team_optimal_score_rankings = "Teams ranked by highest optimal score."
 
+team_injury_rankings = "Team injury rankings show who has had the most injured team throughout " \
+                       "the season. Injury score is calculated using the following point values." \
+                       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
+                       "Questionable = 1" \
+                       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
+                       "Doubtful = 2" \
+                       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
+                       "Out = 3" \
+                       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
+                       "IR = 4"  
+
 bad_boy_rankings = "The Bad Boy ranking is a \"just-for-fun\" metric that pulls NFL player arrest history from the " \
                    "<a href=\"https://www.usatoday.com/sports/nfl/arrests/\" color=blue><u>USA Today NFL player " \
                    "arrest database</u></a>, and then assigns points to all crimes committed by players on each " \

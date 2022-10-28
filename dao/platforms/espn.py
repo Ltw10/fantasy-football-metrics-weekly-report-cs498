@@ -162,6 +162,7 @@ class LeagueData(object):
             team_rosters = {}
             for matchup in self.matchups_by_week[str(week_for_rosters)]:
                 team_rosters[matchup.home_team.team_id] = matchup.home_lineup
+                logger.debug(matchup.home_lineup)
                 team_rosters[matchup.away_team.team_id] = matchup.away_lineup
             self.rosters_by_week[str(week_for_rosters)] = team_rosters
 
