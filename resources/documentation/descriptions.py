@@ -67,11 +67,9 @@ team_injury_rankings = "Team injury rankings show who has had the most injured t
                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
                        "Questionable = 1" \
                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
-                       "Doubtful = 2" \
+                       "Out = 2" \
                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
-                       "Out = 3" \
-                       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" \
-                       "IR = 4"  
+                       "IR = 3"  
 
 bad_boy_rankings = "The Bad Boy ranking is a \"just-for-fun\" metric that pulls NFL player arrest history from the " \
                    "<a href=\"https://www.usatoday.com/sports/nfl/arrests/\" color=blue><u>USA Today NFL player " \

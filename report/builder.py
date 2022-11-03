@@ -217,6 +217,10 @@ class FantasyFootballReport(object):
                         self.league,
                         custom_weekly_matchups
                     ),
+                    "injury_report_stats": metrics_calculator.calculate_injury_points(
+                        week_counter,
+                        self.league
+                    ),
                     "playoff_probs": self.playoff_probs,
                     "bad_boy_stats": self.bad_boy_stats,
                     "beef_stats": self.beef_stats,

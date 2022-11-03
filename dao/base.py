@@ -316,6 +316,7 @@ class BaseTeam(FantasyFootballReportObject):
         self.coaching_efficiency = 0
         self.luck = 0
         self.optimal_points = 0
+        self.injury_report_points = 0
         self.weekly_overall_record = BaseRecord()
         self.record = BaseRecord()
         self.current_record = BaseRecord()

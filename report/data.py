@@ -175,6 +175,7 @@ class ReportData(object):
                 team_result.coaching_efficiency,
                 team_result.luck,
                 team_result.optimal_points,
+                team_result.injury_report_points,
                 z_score_results[team_result.team_id]
             ])
 
@@ -198,6 +199,10 @@ class ReportData(object):
         # optimal score data
         self.data_for_optimal_scores = metrics_calculator.get_optimal_score_data(
             sorted(self.teams_results.values(), key=lambda x: float(x.optimal_points), reverse=True))
+            
+        # injury report data
+        self.data_for_injury_report = metrics_calculator.get_injury_report_data(
+            sorted(self.teams_results.values(), key=lambda x: x.injury_report_points, reverse=True))
 
         # bad boy data
         self.data_for_bad_boy_rankings = metrics_calculator.get_bad_boy_data(

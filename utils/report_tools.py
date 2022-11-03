@@ -619,10 +619,11 @@ def add_report_team_stats(config, team: BaseTeam, league: BaseLeague, week_count
         dq_eligible=dq_ce
     )
 
-    # # retrieve luck and record
+    # # retrieve luck and record and injury report scores
     team.luck = metrics.get("luck").get(team.team_id).get("luck")
     team.weekly_overall_record = metrics.get("luck").get(team.team_id).get("luck_record")
     team.record = metrics.get("records").get(team.team_id)
+    team.injury_report_points = metrics.get("injury_report_stats").get(team.team_id)
 
     return team
 

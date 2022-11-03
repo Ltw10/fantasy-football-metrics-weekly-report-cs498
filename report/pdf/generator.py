@@ -419,7 +419,7 @@ class PdfGenerator(object):
         self.efficiency_headers = [["Place", "Team", "Manager", "Coaching Efficiency (%)", "Season Avg. (Place)"]]
         self.luck_headers = [["Place", "Team", "Manager", "Luck", "Season Avg. (Place)", "Weekly Record (W-L)"]]
         self.optimal_scores_headers = [["Place", "Team", "Manager", "Optimal Points", "Season Total"]]
-        self.injury_report_headers = [["Place", "Team", "Manager", "Injury Points", "Season Total"]]
+        self.injury_report_headers = [["Place", "Team", "Manager", "Record", "Injury Points"]]
         self.bad_boy_headers = [["Place", "Team", "Manager", "Bad Boy Pts", "Worst Offense", "# Offenders"]]
         self.beef_headers = [["Place", "Team", "Manager", "TABBU(s)"]]
         self.weekly_top_scorer_headers = [["Week", "Team", "Manager", "Score"]]
@@ -500,7 +500,7 @@ class PdfGenerator(object):
         self.data_for_coaching_efficiency = report_data.data_for_coaching_efficiency
         self.data_for_luck = report_data.data_for_luck
         self.data_for_optimal_scores = report_data.data_for_optimal_scores
-        #self.data_for_injury_report = report_data.data_for_injury_report
+        self.data_for_injury_report = report_data.data_for_injury_report
         self.data_for_power_rankings = report_data.data_for_power_rankings
         self.data_for_z_scores = report_data.data_for_z_scores
         self.data_for_bad_boy_rankings = report_data.data_for_bad_boy_rankings
@@ -1479,15 +1479,14 @@ class PdfGenerator(object):
             ))
             elements.append(self.spacer_twentieth_inch)
 
-        if self.config.getboolean("Report", "league_optimal_score_rankings"):
-            elements.append(self.add_page_break())
+        # if self.config.getboolean("Report", "league_optimal_score_rankings"):
+        #     elements.append(self.add_page_break())
 
         if self.config.getboolean("Report", "league_injury_report"): 
             elements.append(self.create_section(
                 "Team Injury Rankings",
                 self.injury_report_headers,
-                [],
-                #self.data_for_injury_report,
+                self.data_for_injury_report,
                 self.style,
                 self.style,
                 self.widths_05_cols_no_1

@@ -316,6 +316,23 @@ class CalculateMetrics(object):
         return luck_results_data
 
     @staticmethod
+    def get_injury_report_data(injury_report_results):
+        logger.debug("Creating league injury report data.")
+
+        injury_report_data = []
+        place = 1
+        for team in injury_report_results:
+            ranked_team_name = team.name
+            ranked_team_manager = team.manager_str
+            ranked_team_record = team.record._record_str + " (" + str(team.record.rank) + ")"
+            ranked_injury_points =team.injury_report_points
+
+            injury_report_data.append([place, ranked_team_name, ranked_team_manager, ranked_team_record, ranked_injury_points])
+
+            place += 1
+        return injury_report_data
+
+    @staticmethod
     def get_optimal_score_data(score_results):
         logger.debug("Creating league optimal score data.")
 
@@ -842,3 +859,25 @@ class CalculateMetrics(object):
             results[team_id] = z_score
 
         return results
+
+    @staticmethod
+    def calculate_injury_points(week, league: BaseLeague):
+        logger.debug("Calculating injury statistics for week \"{0}\".".format(week))
+
+        injury_results = {}
+
+        teams = league.teams_by_week.get(str(week))
+        
+        for team in teams.values():
+            injury_points = 0
+            for player in team.roster:
+                if player.status == "QUESTIONABLE":
+                    injury_points += 1
+                if player.status == "OUT":
+                    injury_points += 2
+                if player.status == "INJURY_RESERVE":
+                    injury_points += 3
+            injury_results[team.team_id] = str(injury_points)
+
+        return injury_results
+            
