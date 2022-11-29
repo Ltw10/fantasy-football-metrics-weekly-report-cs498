@@ -1022,6 +1022,7 @@ class PdfGenerator(object):
                     "Report", "team_points_by_position_charts") or self.config.getboolean(
                     "Report", "team_bad_boy_stats") or self.config.getboolean(
                     "Report", "team_beef_stats") or self.config.getboolean(
+                    "Report", "injury_report_stats") or self.config.getboolean(
                     "Report", "team_boom_or_bust"):
                 title = self.create_title("<i>" + team_result.name + "</i>", element_type="section",
                                           anchor="<a name = page.html#" + str(self.toc.get_current_anchor()) + "></a>")
@@ -1100,7 +1101,25 @@ class PdfGenerator(object):
                                                              [2.50 * inch, 2.50 * inch, 2.75 * inch])
                     doc_elements.append(KeepTogether(beefy_boi_table))
                     doc_elements.append(self.spacer_tenth_inch)
-
+################################################################################################################
+            if self.config.getboolean("Report", "league_injury_report"): #and \
+                    #self.config.getboolean("Report", "injury_report_stats"):
+                if player_info:
+                    doc_elements.append(self.create_title("Injured Bois", 8.5, "section"))
+                    doc_elements.append(self.spacer_tenth_inch)
+                    injured_players = sorted(player_info, key=lambda x: x.points, reverse=False)
+                    injured_players_data = []
+                    for player in injured_players:
+                        if player.last_name and player.status != "ACTIVE":
+                            injured_players_data.append([player.full_name, player.status])
+                    injury_boi_table = self.create_data_table([["Player", "Injury Status"]],
+                                                            injured_players_data,
+                                                            self.style_red_highlight,
+                                                            self.style_tied_bad_boy,
+                                                            [2.50 * inch, 2.50 * inch, 2.75 * inch])
+                    doc_elements.append(KeepTogether(injury_boi_table))
+                    doc_elements.append(self.spacer_tenth_inch)
+################################################################################################################
             if self.config.getboolean("Report", "team_boom_or_bust"):
                 if player_info:
                     starting_players = []
@@ -1202,6 +1221,7 @@ class PdfGenerator(object):
                         "Report", "team_points_by_position_charts") or self.config.getboolean(
                         "Report", "team_bad_boy_stats") or self.config.getboolean(
                         "Report", "team_beef_stats") or self.config.getboolean(
+                        "Report", "injury_report_stats") or self.config.getboolean(
                         "Report", "team_boom_or_bust"):
                     doc_elements.append(self.add_page_break())
 
@@ -1652,6 +1672,7 @@ class PdfGenerator(object):
                 "Report", "team_points_by_position_charts") or self.config.getboolean(
                 "Report", "team_bad_boy_stats") or self.config.getboolean(
                 "Report", "team_beef_stats") or self.config.getboolean(
+                "Report", "injury_report_stats") or self.config.getboolean(
                 "Report", "team_boom_or_bust")):
             # dynamically build additional pages for individual team stats
             self.create_team_stats_pages(elements, self.data_for_weekly_points_by_position,
@@ -1746,6 +1767,7 @@ class TableOfContents(object):
                 "Report", "team_points_by_position_charts") or self.config.getboolean(
                 "Report", "team_bad_boy_stats") or self.config.getboolean(
                 "Report", "team_beef_stats") or self.config.getboolean(
+                "Report", "injury_report_stats") or self.config.getboolean(
                 "Report", "team_boom_or_bust")):
             self.toc_team_section_data = [
                 [Paragraph("<b><i>Teams</i></b>", self.toc_style_title_right),
